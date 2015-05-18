@@ -13,10 +13,11 @@ diraR = 1.5;
 okrajTloustka = 6; 
 okrajVyska = 18; 
 vnitrniOkraj = 4; 
-rLaser = 3; 
+tolerance = 0.2; 
+rLaser = 3 + tolerance; 
 hLaser = okrajTloustka; 
-r1Diode = 1.5;
-r2Diode = 2; 
+r1Diode = 1.5 + tolerance;
+r2Diode = 2 + tolerance; 
 hDiode = okrajTloustka / 3; 
 
 module roundCube(x, y, z, r) {
