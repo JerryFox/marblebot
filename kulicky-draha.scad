@@ -1,4 +1,4 @@
-/*
+ /*
 MARBLEBOT
 MARBLE-BOT
 BB-BOT (BallBearing-BOT)
@@ -13,6 +13,11 @@ diraR = 1.5;
 okrajTloustka = 6; 
 okrajVyska = 18; 
 vnitrniOkraj = 4; 
+rLaser = 3; 
+hLaser = okrajTloustka; 
+r1Diode = 1.5;
+r2Diode = 2; 
+hDiode = okrajTloustka / 3; 
 
 module roundCube(x, y, z, r) {
 	translate([r, r, 0]) 
@@ -27,7 +32,7 @@ module sikmyKriz() {
 		rotate(i, [0, 0, 1]) 
 		hull() {
 			sphere(5);
-			translate([modul / 2, 0, 1.5]) sphere(5);
+			translate([modul / 2, 0, diraR]) sphere(5);
 		}
 	}
 }
@@ -78,10 +83,10 @@ module diry_na_svetlo() {
 		translate([(i + 0.5) * modul + vnitrniOkraj + okrajTloustka, -1, 8])
 		rotate(90, [-1, 0, 0])
 		union() {
-			cylinder(r = 1.5, h = pocetY * modul + 2 * (vnitrniOkraj + okrajTloustka) + 2);
-			cylinder(r = 3, h = okrajTloustka + 1.1); // dira na laser
+			cylinder(r = r1Diode, h = pocetY * modul + 2 * (vnitrniOkraj + okrajTloustka) + 2);
+			cylinder(r = rLaser, h = okrajTloustka + 1.1); // dira na laser
 			translate([0, 0, pocetY * modul + 2 * (vnitrniOkraj + okrajTloustka) - 2])
-			cylinder(r = 2, h = okrajTloustka / 3 + 2); // zapusteni diody
+			cylinder(r = r2Diode, h = hDiode + 2); // zapusteni diody
 		}
 	}
 	for (j = [0 : (pocetY - 1)]) {
@@ -89,10 +94,10 @@ module diry_na_svetlo() {
 		rotate(90, [0, 0, -1])
 		rotate(90, [-1, 0, 0])
 		union() {
-			cylinder(r = 1.5, h = pocetX * modul + 2 * (vnitrniOkraj + okrajTloustka) + 2);
-			cylinder(r = 3, h = okrajTloustka + 1.1); // dira na laser
+			cylinder(r = r1Diode, h = pocetX * modul + 2 * (vnitrniOkraj + okrajTloustka) + 2);
+			cylinder(r = rLaser, h = okrajTloustka + 1.1); // dira na laser
 			translate([0, 0, pocetX * modul + 2 * (vnitrniOkraj + okrajTloustka) - 2])
-			cylinder(r = 2, h = okrajTloustka / 3 + 2); // zapusteni diody
+			cylinder(r = r2Diode, h = hDiode + 2); // zapusteni diody
 		}
 	}
 }
