@@ -92,7 +92,7 @@ module draha_s_ohradkou() {
 module diry_na_svetlo() {
 	$fn = 30;
 	for (i = [0 : (pocetX - 1)]) {
-		translate([(i + 0.5) * modul + vnitrniOkraj + okrajTloustka, -1, 8])
+		translate([(i + 0.5) * modul + vnitrniOkraj + okrajTloustka, -1, 8 + tolerance])
 		rotate(90, [-1, 0, 0])
 		union() {
 			cylinder(r = r1Diode, h = pocetY * modul + 2 * (vnitrniOkraj + okrajTloustka) + 2);
@@ -102,7 +102,7 @@ module diry_na_svetlo() {
 		}
 	}
 	for (j = [0 : (pocetY - 1)]) {
-		translate([-1, (j + 0.5) * modul + vnitrniOkraj + okrajTloustka, 8])
+		translate([-1, (j + 0.5) * modul + vnitrniOkraj + okrajTloustka, 8 + tolerance])
 		rotate(90, [0, 0, -1])
 		rotate(90, [-1, 0, 0])
 		union() {
@@ -120,5 +120,4 @@ difference() {
 	diry_na_svetlo();
 } 
 //roundCube(30, 20, 10, 5); 
-
 
