@@ -1,13 +1,18 @@
 profilSirka = 10; 
 profilVyska = 10; 
-tloustka = 1.5; 
-tolerance = 0.3;
+tloustka = 1; 
+tolerance = 0.2;
 sirka = profilSirka + tolerance;
 vyska = profilVyska + tolerance;
 
 module rameno() {
+    $fn=30; 
     difference() {
-        cube([sirka + 2 * tloustka, 3 * sirka, vyska + 2 * tloustka]); 
+        minkowski() {
+            cube([sirka + 2 * tloustka, 3 * sirka, vyska + 2 * tloustka]); 
+            sphere(r = 2); 
+        }
+        color("red") 
         translate([tloustka, vyska, tloustka]) 
         cube([sirka, 3 * sirka, vyska]); 
     }
