@@ -134,7 +134,7 @@ module pouzdroRameneServa() {
     s = 12; 
     difference() {
         dutinka(delka);
-        translate([sirka / 2 + tloustka, -radius, 1]) 
+        translate([sirka / 2 + tloustka, -radius, 1.01]) 
         rotate(180, [0, 1, 0]) 
         servo_arm(arm_t = 2); 
     }
